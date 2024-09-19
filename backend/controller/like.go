@@ -4,8 +4,8 @@ import (
     "errors"
     "net/http"
 
-    "github.com/Tawunchai/review-project/config"
-    "github.com/Tawunchai/review-project/entity"
+    "github.com/apichitlakorn/SA-BRAINBOOM/config"
+    "github.com/apichitlakorn/SA-BRAINBOOM/entity"
     "github.com/gin-gonic/gin"
     "gorm.io/gorm"
 )
@@ -14,7 +14,7 @@ func LikeReview(c *gin.Context) {
     var input struct {
         UserID   uint `json:"user_id"`
         ReviewID uint `json:"review_id"`
-    }
+    }   
 
     db := config.DB()
 

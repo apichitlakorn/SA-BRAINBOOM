@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apichitlakorn/SA-PROJECT-BB/entity"
+	"github.com/apichitlakorn/SA-BRAINBOOM/entity"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -59,7 +59,8 @@ func SetupDatabase() {
 		&entity.CourseCategory{},
 		&entity.UserRole{},
 		&entity.TutorProfile{},
-		&entity.
+		&entity.Task{},
+		
 	)
 
 	AdminRole := &entity.UserRole{
@@ -159,5 +160,22 @@ func SetupDatabase() {
 	db.FirstOrCreate(Review1, &entity.Review{CourseID: &cid1})
 
 	db.FirstOrCreate(User, &entity.User{Email: "sa@gmail.com"})
+
+	task1 := &entity.Task{
+		Title:     "Complete Golang Project",
+		StartDate: time.Now().AddDate(0, 0, 1), // เริ่มต้นวันพรุ่งนี้
+		EndDate:   time.Now().AddDate(0, 0, 7), // สิ้นสุดอีก 7 วัน
+		AllDay:    false,
+		UserID:    &uid1,
+	}
+	task2 := &entity.Task{
+		Title:     "Prepare React Course Material",
+		StartDate: time.Now().AddDate(0, 0, 2), // เริ่มต้นอีก 2 วัน
+		EndDate:   time.Now().AddDate(0, 0, 5), // สิ้นสุดอีก 5 วัน
+		AllDay:    true,
+		UserID:    &uid1,
+	}
+	db.FirstOrCreate(task1, &entity.Task{Title: task1.Title})
+	db.FirstOrCreate(task2, &entity.Task{Title: task2.Title})
 
 }

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/Tawunchai/review-project/config"
-	"github.com/Tawunchai/review-project/entity"
+	"github.com/apichitlakorn/SA-BRAINBOOM/config"
+    "github.com/apichitlakorn/SA-BRAINBOOM/entity"
 )
 
 func GetUserById(c *gin.Context) {
@@ -24,4 +24,6 @@ func GetUserById(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, user)
 }
+
+
 

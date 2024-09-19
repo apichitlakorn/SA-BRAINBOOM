@@ -1,4 +1,4 @@
-module github.com/apichitlakorn/SA-PROJECT-DASHBOARD
+module github.com/apichitlakorn/SA-BRAINBOOM
 
 go 1.23
 

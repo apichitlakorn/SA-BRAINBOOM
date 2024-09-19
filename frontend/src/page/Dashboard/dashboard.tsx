@@ -11,6 +11,8 @@ import LineChart from "../../components/LineChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { GetTotalCourse } from "../../services/dashboard";
+import React, { useEffect, useState } from "react";
 
 // Define types for mock data
 interface Transaction {
@@ -23,6 +25,20 @@ interface Transaction {
 const Dashboard: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [totalCourses, setTotalCourses] = useState<number>(0);
+
+  // Fetch total courses from the backend
+  useEffect(() => {
+    const fetchTotalCourses = async () => {
+      const result = await GetTotalCourse();
+      if (result) {
+        setTotalCourses(result.total_courses); // Store total courses in state
+      }
+    };
+
+    fetchTotalCourses();
+  }, []);
 
   return (
     <Box
@@ -76,10 +92,10 @@ const Dashboard: React.FC = () => {
           }}
         >
           <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress={0.5}
-            increase="+21%"
+            title={totalCourses.toString()} // Display total courses
+            subtitle="Courses Obtained"
+            progress={0.0}
+            increase="+0%"
             icon={
               <PointOfSaleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}

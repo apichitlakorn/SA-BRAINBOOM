@@ -5,8 +5,8 @@ import (
     "strconv"
     "time"
 
-    "github.com/Tawunchai/review-project/config"
-    "github.com/Tawunchai/review-project/entity"
+    "github.com/apichitlakorn/SA-BRAINBOOM/config"
+    "github.com/apichitlakorn/SA-BRAINBOOM/entity"
     "github.com/gin-gonic/gin"
 )
 

@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/apichitlakorn/SA-PROJECT-DASHBOARD/backend/config"
-	"github.com/apichitlakorn/SA-PROJECT-BB/tree/main/controller"
+	"github.com/apichitlakorn/SA-BRAINBOOM/config"
+	"github.com/apichitlakorn/SA-BRAINBOOM/controller"
 	"github.com/gin-gonic/gin"
 )
 
@@ -35,6 +35,19 @@ func main() {
         router.POST("/reviews/like", controller.LikeReview)
         router.POST("/reviews/unlike", controller.UnlikeReview)
         router.GET("/reviews/:userID/:reviewID/like", controller.CheckUserLikeStatus)
+
+        router.GET("/tasks", controller.ListTasks)
+        router.GET("/tasks/:id", controller.GetTaskById)
+        router.POST("/tasks", controller.CreateTask)
+        router.PUT("/tasks/:id", controller.UpdateTask)
+        router.DELETE("/tasks/:id", controller.DeleteTask)
+
+         // Course routes
+         
+		router.GET("/course", controller.ListCourse)
+        router.GET("/course-count", controller.CountCourses)
+
+        
     }
 
     r.GET("/", func(c *gin.Context) {
